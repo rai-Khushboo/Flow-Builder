@@ -9,6 +9,8 @@ Interactive canvas built with React Flow and Vite. Drag predefined blocks onto t
 - **Context menu** on right-click of a block
 - **Minimap** toggled with M key
 
+![screenshot of flow builder](image.png)
+
 ## Getting Started
 
 ### Installation
@@ -50,10 +52,10 @@ Then open the URL shown in the terminal (typically `http://localhost:5173`).
 ## Deployment
 ### Deployed Vercel Link
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new)
+[![Deployed with Vercel](https://vercel.com/button)](https://flow-builder-sigma.vercel.app/)
 
 ### Live Demo
-- Deployment URL: `https://my-vercel-url.vercel.app`
+- Deployed URL: `https://flow-builder-sigma.vercel.app/`
 
 ## Project Structure(In case you want to download and make any changes)
 ```
