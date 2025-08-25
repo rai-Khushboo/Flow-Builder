@@ -82,7 +82,9 @@ const CanvasControls = ({ nodes, onUndo, onRedo, canUndo, canRedo }) => {
       {isMinimapVisible && (
         <MiniMap 
           className="bg-gray-50 border border-gray-300 rounded-lg"
-          nodeColor={(node) => node.data.color}
+          nodeColor={() => 'transparent'}
+          nodeStrokeColor={(node) => node?.data?.color || '#9CA3AF'}
+          nodeStrokeWidth={1.5}
         />
       )}
     </>
