@@ -4,7 +4,6 @@ import BlockItem from './BlockItem';
 import ConnectionRules from './ConnectionRules';
 
 const BlockPanel = () => {
-  // Drag and Drop Logic (inline for easier understanding)
   const onDragStart = useCallback((event, blockType) => {
     event.dataTransfer.setData('application/reactflow', blockType);
     event.dataTransfer.effectAllowed = 'move';
