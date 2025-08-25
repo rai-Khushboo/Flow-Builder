@@ -1,4 +1,4 @@
-// ReactFlow configuration
+// ReactFlow config
 export const REACTFLOW_CONFIG = {
   connectionMode: 'loose',
   snapToGrid: true,
@@ -13,7 +13,6 @@ export const REACTFLOW_CONFIG = {
   proOptions: { hideAttribution: true },
 };
 
-// Edge styling 
 export const EDGE_STYLES = {
   type: 'smoothstep',
   style: { stroke: '#3B82F6', strokeWidth: 2 },
@@ -31,7 +30,7 @@ export const HANDLE_STYLES = {
   border: '2px solid white',
 };
 
-// Connection validation rules
+// Connection rules
 export const CONNECTION_RULES = {
   allowedSourceTypes: ['Block A'],
   allowedTargetTypes: ['Block B'],

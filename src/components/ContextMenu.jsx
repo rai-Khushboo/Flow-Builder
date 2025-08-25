@@ -2,7 +2,6 @@ import React, { useCallback } from 'react';
 import ContextMenuItem from './ContextMenuItem';
 
 const ContextMenu = ({ x, y, node, onClose }) => {
-  // Context Menu Logic (inline for easier understanding)
   const handleMenuItemClick = useCallback((action) => {
     console.log(`Action: ${action} on node:`, node);
     onClose();
@@ -14,8 +13,8 @@ const ContextMenu = ({ x, y, node, onClose }) => {
       style={{ 
         left: x, 
         top: y,
-        transform: 'translate(-50%, -100%)', // Center horizontally and position above cursor
-        marginTop: '-10px' // Small offset for better positioning
+        transform: 'translate(-50%, -100%)', 
+        marginTop: '-10px' 
       }}
     >
       <ContextMenuItem

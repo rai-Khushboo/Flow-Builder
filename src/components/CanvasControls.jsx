@@ -8,7 +8,6 @@ const CanvasControls = ({ nodes, onUndo, onRedo, canUndo, canRedo }) => {
     setIsMinimapVisible(!isMinimapVisible);
   };
 
-  // Keyboard shortcut to toggle minimap (M key)
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === 'm' || event.key === 'M') {

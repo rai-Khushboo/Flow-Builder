@@ -31,7 +31,6 @@ const App = () => {
         {/* Main Content */}
         <div className="flex flex-1 pt-16 flex-col md:flex-row">
           <Canvas />
-          {/* Sidebar: always visible on md+, toggle on mobile */}
           <div id="block-panel" className={`md:block ${isPanelOpen ? 'block' : 'hidden'}`}>
             <BlockPanel />
           </div>

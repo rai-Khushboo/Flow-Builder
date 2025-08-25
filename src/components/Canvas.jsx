@@ -6,16 +6,13 @@ import ReactFlow, {
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 
-// Import custom components
 import CustomBlockNode from './CustomBlockNode';
 import CanvasControls from './CanvasControls';
 import CanvasOverlay from './CanvasOverlay';
 import ContextMenu from './ContextMenu';
 
-// Import constants
 import { REACTFLOW_CONFIG, EDGE_STYLES, CONNECTION_RULES } from '../utils/constants';
 
-// Import data
 import blocksData from '../data/blocks.json';
 
 const nodeTypes = {
@@ -28,6 +25,9 @@ const Canvas = () => {
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   const [reactFlowInstance, setReactFlowInstance] = useState(null);
   const [contextMenu, setContextMenu] = useState(null);
+  // Undo/Redo availability state (for UI updates)
+  const [canUndo, setCanUndo] = useState(false);
+  const [canRedo, setCanRedo] = useState(false);
   // History management refs
   const pastRef = useRef([]);
   const futureRef = useRef([]);
@@ -40,12 +40,12 @@ const Canvas = () => {
     const sourceNode = nodes.find(node => node.id === params.source);
     const targetNode = nodes.find(node => node.id === params.target);
     
-    console.log('Connection attempt:', { 
-      sourceNode: sourceNode?.data?.type, 
-      targetNode: targetNode?.data?.type,
-      sourceHandle: params.sourceHandle,
-      targetHandle: params.targetHandle
-    });
+    // console.log('Connection attempt:', { 
+    //   sourceNode: sourceNode?.data?.type, 
+    //   targetNode: targetNode?.data?.type,
+    //   sourceHandle: params.sourceHandle,
+    //   targetHandle: params.targetHandle
+    // });
     
     //  Block A → Block B connection
     const isValidSource = CONNECTION_RULES.allowedSourceTypes.includes(sourceNode?.data?.type);
@@ -182,24 +182,28 @@ const Canvas = () => {
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  // History effect: track node/edge changes and push previous snapshot to past
+  //undo redo
   useEffect(() => {
     if (isApplyingHistory.current) {
-      // Skip recording when applying undo/redo
       isApplyingHistory.current = false;
       return;
     }
     const currentSnapshot = JSON.stringify({ nodes, edges });
     if (!hasInitializedRef.current) {
-      hasInitializedRef.current = true;
-      prevSnapshotRef.current = currentSnapshot;
-      return;
-    }
-    if (prevSnapshotRef.current !== currentSnapshot) {
+      if (prevSnapshotRef.current !== currentSnapshot) {
+        pastRef.current.push(prevSnapshotRef.current);
+        prevSnapshotRef.current = currentSnapshot;
+        hasInitializedRef.current = true;
+        futureRef.current = [];
+      }
+    } else if (prevSnapshotRef.current !== currentSnapshot) {
       pastRef.current.push(prevSnapshotRef.current);
       prevSnapshotRef.current = currentSnapshot;
       futureRef.current = [];
     }
+    
+    setCanUndo(pastRef.current.length > 0);
+    setCanRedo(futureRef.current.length > 0);
   }, [nodes, edges]);
 
   const undo = useCallback(() => {
@@ -213,6 +217,8 @@ const Canvas = () => {
     isApplyingHistory.current = true;
     setNodes(prevNodes);
     setEdges(prevEdges);
+    setCanUndo(pastRef.current.length > 0);
+    setCanRedo(futureRef.current.length > 0);
   }, [setNodes, setEdges]);
 
   const redo = useCallback(() => {
@@ -226,9 +232,11 @@ const Canvas = () => {
     isApplyingHistory.current = true;
     setNodes(nextNodes);
     setEdges(nextEdges);
+    setCanUndo(pastRef.current.length > 0);
+    setCanRedo(futureRef.current.length > 0);
   }, [setNodes, setEdges]);
 
-  // Keyboard shortcuts: Ctrl+Z (undo), Ctrl+Y or Ctrl+Shift+Z (redo)
+  // Keyboard shortcuts for undo , redo
   useEffect(() => {
     const handleKeyDown = (event) => {
       const isInput = ['INPUT', 'TEXTAREA'].includes(event.target.tagName) || event.target.isContentEditable;
@@ -271,16 +279,14 @@ const Canvas = () => {
             nodes={nodes} 
             onUndo={undo} 
             onRedo={redo} 
-            canUndo={pastRef.current.length > 0} 
-            canRedo={futureRef.current.length > 0}
+            canUndo={canUndo} 
+            canRedo={canRedo}
           />
         </ReactFlow>
       </div>
       
-      {/* Overlay instructions */}
       <CanvasOverlay nodes={nodes} />
       
-      {/* Context Menu */}
       {contextMenu && (
         <ContextMenu
           x={contextMenu.x}
