@@ -25,6 +25,8 @@ Then open the URL shown in the terminal (typically `http://localhost:5173`).
 ## How to Use
 - Drag a block from the right panel to the canvas.
 - Connect from a Block A handle to a Block B handle.
+- Hold and move the mouse to move over the canvas 
+- use mouse to increase and decrease the size of snapshot you made.
 - **Undo** recent actions with Ctrl/Cmd+Z or the top-right Undo button.
 - **Redo** with Ctrl/Cmd+Y or Ctrl/Cmd+Shift+Z or the top-right Redo button.
 - Toggle minimap with the M key.
