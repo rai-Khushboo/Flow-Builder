@@ -15,13 +15,13 @@ const BlockPanel = () => {
   }, []);
 
   return (
-    <div className="w-full md:w-64 bg-gray-50 border-t md:border-t-0 md:border-l border-gray-200 p-4 h-64 md:h-full overflow-y-auto">
-      <div className="sticky top-0 bg-gray-50 pb-4">
-        <h3 className="text-lg font-semibold text-gray-800">Available Blocks</h3>
-        <p className="text-xs text-gray-500 mt-1">Drag blocks to canvas</p>
+    <div className="w-full md:w-72 bg-white/70 backdrop-blur supports-[backdrop-filter]:bg-white/50 border-t md:border-t-0 md:border-l border-gray-200 h-64 md:h-full overflow-y-auto">
+      <div className="sticky top-0 z-10 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-gray-200 px-4 py-3">
+        <h3 className="text-sm font-semibold tracking-wide text-gray-900">Available Blocks</h3>
+        <p className="text-xs text-gray-500">Drag blocks to canvas</p>
       </div>
       
-      <div className="space-y-3">
+      <div className="p-4 space-y-3">
         {blocksData.blocks.map((block) => (
           <BlockItem
             key={block.id}
@@ -32,7 +32,9 @@ const BlockPanel = () => {
         ))}
       </div>
       
-      <ConnectionRules />
+      <div className="px-4 pb-4">
+        <ConnectionRules />
+      </div>
     </div>
   );
 };

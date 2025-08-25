@@ -6,14 +6,14 @@ const CanvasOverlay = ({ nodes }) => {
   return (
     <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
       <div className="relative max-w-md w-[90%] text-center">
-        <div className="relative bg-white/80 backdrop-blur-md p-6 rounded-xl shadow-lg border border-gray-200">
-          <div className="mx-auto mb-3 w-10 h-10 rounded-full bg-indigo-50 border border-indigo-200 flex items-center justify-center text-indigo-600">
+        <div className="relative bg-white/80 backdrop-blur-md p-6 rounded-2xl shadow-xl border border-gray-200">
+          <div className="mx-auto mb-3 w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-100 to-blue-100 border border-indigo-200 flex items-center justify-center text-indigo-600">
             <span aria-hidden>🔗</span>
           </div>
           <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2 tracking-tight">
             To Start
           </h3>
-          <div className="mx-auto mb-2 h-0.5 w-10 bg-gray-200 rounded-full" />
+          <div className="mx-auto mb-3 h-1 w-10 bg-gradient-to-r from-gray-200 to-gray-300 rounded-full" />
           <p className="text-gray-600 text-sm">
             Drag blocks from the right panel onto this canvas to begin building your flow.
           </p>
@@ -23,11 +23,7 @@ const CanvasOverlay = ({ nodes }) => {
           <div className="mt-4 pt-3 border-t border-gray-200">
             <div className="flex flex-col items-center gap-1 text-gray-500 text-xs">
               <p>
-                💡 Press
-                {' '}
-                <kbd className="px-1 py-0.5 bg-gray-100 border border-gray-300 rounded text-[10px] shadow-sm">M</kbd>
-                {' '}
-                to toggle minimap
+                💡 Press <kbd className="px-1 py-0.5 bg-gray-100 border border-gray-300 rounded text-[10px] shadow-sm">M</kbd> to toggle minimap
               </p>
               <p>🖱️ Right-click on any block to open the context menu</p>
             </div>

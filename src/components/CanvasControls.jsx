@@ -25,7 +25,7 @@ const CanvasControls = ({ nodes, onUndo, onRedo, canUndo, canRedo }) => {
 
   return (
     <>
-      <Controls className="bg-white border border-gray-300 rounded-lg shadow-md" />
+      <Controls className="bg-white/90 backdrop-blur border border-gray-200 rounded-xl shadow-md" />
       <Background 
         color="#e5e7eb" 
         gap={20} 
@@ -37,7 +37,7 @@ const CanvasControls = ({ nodes, onUndo, onRedo, canUndo, canRedo }) => {
       <div className="absolute bottom-4 right-4 z-10">
         <button
           onClick={toggleMinimap}
-          className="bg-white border border-gray-300 rounded-lg shadow-md p-2 hover:shadow-lg transition-all duration-200 text-gray-600 hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+          className="bg-white/90 backdrop-blur border border-gray-200 rounded-xl shadow-md p-2 hover:shadow-lg transition-all duration-200 text-gray-600 hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
           title={`${isMinimapVisible ? "Hide" : "Show"} minimap (M)`}
         >
           {isMinimapVisible ? (
@@ -57,7 +57,7 @@ const CanvasControls = ({ nodes, onUndo, onRedo, canUndo, canRedo }) => {
         <button
           onClick={onUndo}
           disabled={!canUndo}
-          className={`bg-white border border-gray-300 rounded-lg shadow-md p-2 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 ${canUndo ? 'hover:shadow-lg text-gray-700 hover:text-gray-900' : 'opacity-50 cursor-not-allowed text-gray-400'}`}
+          className={`bg-white/90 backdrop-blur border border-gray-200 rounded-xl shadow-md p-2 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 ${canUndo ? 'hover:shadow-lg text-gray-700 hover:text-gray-900' : 'opacity-50 cursor-not-allowed text-gray-400'}`}
           title="Undo (Ctrl/Cmd+Z)"
         >
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -68,7 +68,7 @@ const CanvasControls = ({ nodes, onUndo, onRedo, canUndo, canRedo }) => {
         <button
           onClick={onRedo}
           disabled={!canRedo}
-          className={`bg-white border border-gray-300 rounded-lg shadow-md p-2 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 ${canRedo ? 'hover:shadow-lg text-gray-700 hover:text-gray-900' : 'opacity-50 cursor-not-allowed text-gray-400'}`}
+          className={`bg-white/90 backdrop-blur border border-gray-200 rounded-xl shadow-md p-2 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 ${canRedo ? 'hover:shadow-lg text-gray-700 hover:text-gray-900' : 'opacity-50 cursor-not-allowed text-gray-400'}`}
           title="Redo (Ctrl/Cmd+Y or Ctrl/Cmd+Shift+Z)"
         >
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -81,7 +81,7 @@ const CanvasControls = ({ nodes, onUndo, onRedo, canUndo, canRedo }) => {
       {/* Minimap - Conditionally Rendered */}
       {isMinimapVisible && (
         <MiniMap 
-          className="bg-gray-50 border border-gray-300 rounded-lg"
+          className="bg-white/50 backdrop-blur border border-gray-200 rounded-xl shadow"
           nodeColor={() => 'transparent'}
           nodeStrokeColor={(node) => node?.data?.color || '#9CA3AF'}
           nodeStrokeWidth={1.5}

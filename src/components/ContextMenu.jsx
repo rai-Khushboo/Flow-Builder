@@ -9,7 +9,7 @@ const ContextMenu = ({ x, y, node, onClose }) => {
 
   return (
     <div
-      className="absolute bg-white border border-gray-300 rounded-lg shadow-xl py-1 z-[9999] min-w-40"
+      className="absolute bg-white/95 backdrop-blur border border-gray-200 rounded-xl shadow-2xl py-1 z-[9999] min-w-44"
       style={{ 
         left: x, 
         top: y,
