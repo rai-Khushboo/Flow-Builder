@@ -248,7 +248,7 @@ const Canvas = () => {
   }, [undo, redo]);
 
   return (
-    <div className="flex-1 h-full relative bg-gray-100">
+    <div className="flex-1 h-[calc(100vh-4rem)] md:h-full relative bg-gray-100">
       <div className="w-full h-full" ref={reactFlowWrapper}>
         <ReactFlow
           nodes={nodes}

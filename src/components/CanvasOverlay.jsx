@@ -10,9 +10,10 @@ const CanvasOverlay = ({ nodes }) => {
           <div className="mx-auto mb-3 w-10 h-10 rounded-full bg-indigo-50 border border-indigo-200 flex items-center justify-center text-indigo-600">
             <span aria-hidden>🔗</span>
           </div>
-          <h3 className="text-lg font-semibold text-gray-800 mb-2 tracking-tight">
+          <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2 tracking-tight">
             To Start
           </h3>
+          <div className="mx-auto mb-2 h-0.5 w-10 bg-gray-200 rounded-full" />
           <p className="text-gray-600 text-sm">
             Drag blocks from the right panel onto this canvas to begin building your flow.
           </p>

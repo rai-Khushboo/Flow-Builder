@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ReactFlowProvider } from 'reactflow';
 import Canvas from './components/Canvas';
 import BlockPanel from './components/BlockPanel';
 
 const App = () => {
+  const [isPanelOpen, setIsPanelOpen] = useState(false);
   return (
     <ReactFlowProvider>
       <div className="w-full h-screen flex bg-gray-100 font-sans">
@@ -16,13 +17,24 @@ const App = () => {
                 Drag blocks to create connections 
               </p>
             </div>
+            <button
+              className="md:hidden inline-flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-md border border-gray-300"
+              onClick={() => setIsPanelOpen((v) => !v)}
+              aria-expanded={isPanelOpen}
+              aria-controls="block-panel"
+            >
+              {isPanelOpen ? 'Hide Blocks' : 'Show Blocks'}
+            </button>
           </div>
         </div>
 
         {/* Main Content */}
-        <div className="flex flex-1 pt-16">
+        <div className="flex flex-1 pt-16 flex-col md:flex-row">
           <Canvas />
-          <BlockPanel />
+          {/* Sidebar: always visible on md+, toggle on mobile */}
+          <div id="block-panel" className={`md:block ${isPanelOpen ? 'block' : 'hidden'}`}>
+            <BlockPanel />
+          </div>
         </div>
       </div>
     </ReactFlowProvider>

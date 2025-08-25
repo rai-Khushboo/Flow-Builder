@@ -15,7 +15,7 @@ const BlockPanel = () => {
   }, []);
 
   return (
-    <div className="w-64 bg-gray-50 border-l border-gray-200 p-4 h-full overflow-y-auto">
+    <div className="w-full md:w-64 bg-gray-50 border-t md:border-t-0 md:border-l border-gray-200 p-4 h-64 md:h-full overflow-y-auto">
       <div className="sticky top-0 bg-gray-50 pb-4">
         <h3 className="text-lg font-semibold text-gray-800">Available Blocks</h3>
         <p className="text-xs text-gray-500 mt-1">Drag blocks to canvas</p>
