@@ -1,0 +1,18 @@
+{
+  "blocks": [
+    {
+      "id": "block-a",
+      "type": "Block A",
+      "label": "Block A",
+      "color": "#3B82F6",
+      "description": "Source block that can connect to Block B"
+    },
+    {
+      "id": "block-b", 
+      "type": "Block B",
+      "label": "Block B",
+      "color": "#EF4444",
+      "description": "Target block that receives connections from Block A"
+    }
+  ]
+}
