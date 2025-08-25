@@ -7,9 +7,9 @@ Interactive canvas built with React Flow and Vite. Drag predefined blocks onto t
 - **Connection rules**: Only Block A (source) → Block B (target)
 - **Undo/Redo**: Buttons and shortcuts (Ctrl/Cmd+Z, Ctrl/Cmd+Y / Ctrl+Shift+Z)
 - **Context menu** on right-click of a block
-- **Minimap** toggled with M key
+- **Minimap** toggled with M key - added to provide a detailed view of canvas
 
-![screenshot of flow builder](image.png)
+![ss of flow builder](image-1.png)
 
 ## Getting Started
 
@@ -27,6 +27,7 @@ Then open the URL shown in the terminal (typically `http://localhost:5173`).
 ## How to Use
 - Drag a block from the right panel to the canvas.
 - Connect from a Block A handle to a Block B handle.
+- click on drag icon , to move blocks
 - Hold and move the mouse to move over the canvas 
 - use mouse to increase and decrease the size of snapshot you made.
 - **Undo** recent actions with Ctrl/Cmd+Z or the top-right Undo button.
@@ -36,11 +37,11 @@ Then open the URL shown in the terminal (typically `http://localhost:5173`).
 
 ## Summary of the Solution
 - Summary of the Solution
--Drag-and-drop interface with predefined blocks using React Flow.
--Connections restricted: Only Block A → Block B is valid.
--Undo/Redo support for connection through snapshot-based history stacks.
--Context menu on right-click displaying “Hello World”.
--Keyboard shortcuts and minimap toggle for improved UX.
+- Drag-and-drop interface with predefined blocks using React Flow.
+- Connections restricted: Only Block A → Block B is valid.
+- Undo/Redo support for connection through snapshot-based history stacks.
+- Context menu on right-click displaying “Hello World”.
+- Keyboard shortcuts and minimap toggle for improved UX.
 
 ## Design Decisions
 - **Snapshot-based history**: Captures { nodes, edges } as JSON for simplicity and reliability.
