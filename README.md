@@ -13,6 +13,10 @@ Interactive canvas built with React Flow and Vite. Drag predefined blocks onto t
 
 ## Getting Started
 
+```bash
+clone the repo on your local system
+```
+
 ### Installation
 ```bash
 npm install
