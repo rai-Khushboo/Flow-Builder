@@ -1,12 +1,69 @@
-# React + Vite
+## Block Interaction Canvas
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Interactive canvas built with React Flow and Vite. Drag predefined blocks onto the canvas and connect them according to configured rules. Includes Undo/Redo, context menus, minimap toggle, and keyboard shortcuts.
 
-Currently, two official plugins are available:
+### Features
+- **Drag & drop blocks** from the right panel onto the canvas
+- **Connection rules**: Only Block A (source) → Block B (target)
+- **Undo/Redo**: Buttons and shortcuts (Ctrl/Cmd+Z, Ctrl/Cmd+Y / Ctrl+Shift+Z)
+- **Context menu** on right-click of a block
+- **Minimap** toggled with M key
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Getting Started
 
-## Expanding the ESLint configuration
+### Installation
+```bash
+npm install
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Run the app (development)
+```bash
+npm run dev
+```
+Then open the URL shown in the terminal (typically `http://localhost:5173`).
+
+## How to Use
+- Drag a block from the right panel to the canvas.
+- Connect from a Block A handle to a Block B handle.
+- **Undo** recent actions with Ctrl/Cmd+Z or the top-right Undo button.
+- **Redo** with Ctrl/Cmd+Y or Ctrl/Cmd+Shift+Z or the top-right Redo button.
+- Toggle minimap with the M key.
+- Right-click a block to open its context menu.
+
+## Summary of the Solution
+- Summary of the Solution
+-Drag-and-drop interface with predefined blocks using React Flow.
+-Connections restricted: Only Block A → Block B is valid.
+-Undo/Redo support for connection through snapshot-based history stacks.
+-Context menu on right-click displaying “Hello World”.
+-Keyboard shortcuts and minimap toggle for improved UX.
+
+## Design Decisions
+- **Snapshot-based history**: Captures { nodes, edges } as JSON for simplicity and reliability.
+- **Refs for stacks**: useRef avoids unnecessary rerenders when stack sizes change.
+- **Guarding updates**: isApplyingHistory flag ensures applying history doesn’t create new entries.
+- **Non-invasive integration**: History logic wraps around React Flow’s state hooks.
+- **Keyboard-first UX**: Common, familiar shortcuts and button affordances.
+
+## Deployment
+### Deployed Vercel Link
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new)
+
+### Live Demo
+- Deployment URL: `https://my-vercel-url.vercel.app`
+
+## Project Structure(In case you want to download and make any changes)
+```
+src/
+  components/
+    Canvas.jsx           # Canvas state, history, keyboard shortcuts
+    CanvasControls.jsx   # React Flow controls, minimap toggle, Undo/Redo buttons
+    CustomBlockNode.jsx  # Node UI and handles
+    BlockPanel.jsx       # Right panel with draggable blocks and rules
+    ContextMenu*.jsx     # Context menu and items
+  data/blocks.json       # Block definitions
+  utils/constants.js     # React Flow config, edge/handle styles, connection rules
+```
+
+### Made with ❤️ using React Flow and Vite.  
