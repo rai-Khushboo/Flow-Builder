@@ -236,6 +236,20 @@ const Canvas = () => {
     setCanRedo(futureRef.current.length > 0);
   }, [setNodes, setEdges]);
 
+  // Clear canvas
+  const clearCanvas = useCallback(() => {
+    // Reset graph
+    setNodes([]);
+    setEdges([]);
+    // Reset history tracking
+    pastRef.current = [];
+    futureRef.current = [];
+    prevSnapshotRef.current = JSON.stringify({ nodes: [], edges: [] });
+    hasInitializedRef.current = false;
+    setCanUndo(false);
+    setCanRedo(false);
+  }, [setNodes, setEdges]);
+
   // Keyboard shortcuts for undo , redo
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -281,6 +295,7 @@ const Canvas = () => {
             onRedo={redo} 
             canUndo={canUndo} 
             canRedo={canRedo}
+            onClear={clearCanvas}
           />
         </ReactFlow>
       </div>

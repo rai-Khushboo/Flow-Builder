@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Controls, Background, MiniMap } from 'reactflow';
 
-const CanvasControls = ({ nodes, onUndo, onRedo, canUndo, canRedo }) => {
+const CanvasControls = ({ nodes, onUndo, onRedo, canUndo, canRedo, onClear }) => {
   const [isMinimapVisible, setIsMinimapVisible] = useState(false);
 
   const toggleMinimap = () => {
@@ -74,6 +74,15 @@ const CanvasControls = ({ nodes, onUndo, onRedo, canUndo, canRedo }) => {
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 7h-5a7 7 0 00-7 7v0" />
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 7l-4-4M21 7l-4 4" />
+          </svg>
+        </button>
+        <button
+          onClick={onClear}
+          className="bg-white/90 backdrop-blur border border-red-200 text-red-600 rounded-xl shadow-md p-2 hover:shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
+          title="Clear Canvas"
+        >
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m-3 0h14" />
           </svg>
         </button>
       </div>
